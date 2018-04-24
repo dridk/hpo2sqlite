@@ -28,6 +28,8 @@ db.create_tables([HPO])
 # Get hpo obo and create a directed graph 
 print("Download obo hpo")
 obograph = nx.DiGraph(obo.read_obo("http://purl.obolibrary.org/obo/hp.obo"))
+# Reverse all edge 
+obograph = obograph.reverse()
 
 # Convert Dag To Tree ( create duplicate)
 print("Convert HPO DAG to Tree")
