@@ -5,7 +5,7 @@ The Tree is visited to compute left and right index and store in a sqlite databa
 There are two main table: Terms and Nodes.
 
 ## Dependencies 
-You need python3 with the following module
+You need python3 with the following modules
 
 ```
 pip install networkx
