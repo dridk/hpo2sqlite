@@ -50,7 +50,7 @@ Nodes table contains the HPO ontology as a Tree. Because hpo ontology is a Direc
 ### Childs selection
 Select all childs of HPO term HP:0012632 (Abnormal intraocular pressure)
 
-#### Step by Step example
+#### Step by step example
 ```
 # Get the term id
 SELECT id FROM terms WHERE hpo = "HP:0012632" // get 9124
@@ -60,9 +60,10 @@ SELECT left,right FROM nodes WHERE term_id=9124 //get 99982 and 99987
 SELECT * FROM nodes WHERE left > 99982 AND right < 99987
 ```
 
-#### In one query
+#### one query
 ```
 SELECT terms.hpo, terms.name FROM nodes
 INNER JOIN (SELECT left, right FROM nodes WHERE term_id = (SELECT id FROM terms WHERE hpo = "HP:0012632")) as root ON nodes.left > root.left AND nodes.right < root.right     
 INNER JOIN terms ON  terms.id = nodes.term_id
 ```
+
