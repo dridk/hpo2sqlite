@@ -9,6 +9,7 @@ import os
 import model 
 import hashlib
 import datetime
+import sys
 
 # =========================================================================================
 
@@ -57,12 +58,15 @@ def visit_tree(tree):
 # =========================================================================================
 
 
-print(read_obo_version("hp.obo"))
+obo_filename = str(sys.argv[1]) 
 
-print("loading obo")
+
+
+print("loading obo ", obo_filename)
 #obograph = pickle.load(open("obograph.pickle","rb"))
 obograph = dag_from_obo("http://purl.obolibrary.org/obo/hp.obo")
 
+print("converting dag to tree. It can takes a while ...")
 #obotree  = pickle.load(open("obotree.pickle","rb"))
 obotree  = tree_from_dag(obograph)
 
@@ -74,8 +78,8 @@ tree = visit_tree(obotree)
 model.create_database_shema()
 
 
-model.Informations( hpo_version = read_obo_version("hp.obo"), 
-                    hpo_md5     = hashlib.md5(open('hp.obo','rb').read()).hexdigest(),
+model.Informations( hpo_version = read_obo_version(obo_filename), 
+                    hpo_md5     = hashlib.md5(open(obo_filename,'rb').read()).hexdigest(),
                     saved_by    = "Sacha Schutz",
                     version     =  str(datetime.datetime.now())
                   ).save()
@@ -109,6 +113,8 @@ with model.db.transaction() as txn:
         item.right     = i[1]["right"]
         item.depth     = i[1]["depth"]
         item.parent_id = i[1]["parent"]
-        item.source    = all_terms[i[1]["source"]]
+        item.term      = all_terms[i[1]["source"]]
 
         item.save()
+
+

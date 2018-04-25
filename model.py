@@ -20,7 +20,7 @@ class Nodes(Model):
     right     = IntegerField()
     depth     = IntegerField()
     parent_id = IntegerField()
-    source    = ForeignKeyField(Terms)
+    term      = ForeignKeyField(Terms)
 
     class Meta:
         database = db 
