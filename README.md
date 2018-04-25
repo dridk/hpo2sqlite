@@ -1,7 +1,26 @@
 # hpo2sqlite
 This script convert HPO ontology to a sqlite database as a tree according the [nested set model](https://en.wikipedia.org/wiki/Nested_set_model). 
-It takes [HPO obo file](http://purl.obolibrary.org/obo/hp.obo) as argument and construct a tree to visit with networkx.   
+It takes [HPO obo file](http://purl.obolibrary.org/obo/hp.obo) as argument and construct a tree with networkx.
+The Tree is visited to compute left and right index and store in a sqlite database using peewee ORM model.
 There are two main table: Terms and Nodes.
+
+## Dependencies 
+You need python3 with the following module
+
+```
+pip install networkx
+pip install obonet 
+pip install peewee 
+```
+
+## Run 
+Download hpo obo file from http://purl.obolibrary.org/obo/hp.obo and run the script as follow
+
+```
+python import_hpo_obo.py hp.obo
+```
+
+
 
 ### Table Terms 
 Terms contains each unique HPO term with name and definition. 
