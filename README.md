@@ -43,7 +43,6 @@ Nodes table contains the HPO ontology as a Tree. Because hpo ontology is a Direc
 | left       | INTEGER (left index)             |
 | right      | INTEGER (right index)            |
 | depth      | INTEGER (depth of the node)      |
-| parent_id  | INTEGER (node parent id)         |
 | term_id    | INTEGER (term_id)                |
 
 ## Query example 
