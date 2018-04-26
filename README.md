@@ -46,8 +46,8 @@ Nodes table contains the HPO ontology as a Tree. Because hpo ontology is a Direc
 | term_id    | INTEGER (term_id)                |
 
 ## Query example 
-### Childs selection
-Select all childs of HPO term HP:0012632 (Abnormal intraocular pressure)
+### Children selection
+Select all children of HPO term HP:0012632 (Abnormal intraocular pressure)
 
 #### Step by step example
 ```
@@ -55,7 +55,7 @@ Select all childs of HPO term HP:0012632 (Abnormal intraocular pressure)
 SELECT id FROM terms WHERE hpo = "HP:0012632" // get 9124
 # Get the node left and right 
 SELECT left,right FROM nodes WHERE term_id=9124 //get 99982 and 99987
-# Select all childs nodes
+# Select all children nodes
 SELECT * FROM nodes WHERE left > 99982 AND right < 99987
 ```
 All steps can be summarized in one query : 
