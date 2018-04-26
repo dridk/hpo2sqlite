@@ -59,11 +59,18 @@ SELECT left,right FROM nodes WHERE term_id=9124 //get 99982 and 99987
 # Select all childs nodes
 SELECT * FROM nodes WHERE left > 99982 AND right < 99987
 ```
+All steps can be summarized in one query : 
 
-#### one query
 ```
 SELECT terms.hpo, terms.name FROM nodes
 INNER JOIN (SELECT left, right FROM nodes WHERE term_id = (SELECT id FROM terms WHERE hpo = "HP:0012632")) as root ON nodes.left > root.left AND nodes.right < root.right     
 INNER JOIN terms ON  terms.id = nodes.term_id
 ```
 
+You can specify the depth if you only want to first level childs. 
+
+```
+SELECT terms.hpo, terms.name FROM nodes
+INNER JOIN (SELECT left, right FROM nodes WHERE term_id = (SELECT id FROM terms WHERE hpo = "HP:0012632")) as root ON nodes.left > root.left AND nodes.right < root.right  AND (nodes.depth - root.depth) < 2
+INNER JOIN terms ON  terms.id = nodes.term_id
+```
