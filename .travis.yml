@@ -15,8 +15,10 @@ install:
   - conda info -a
 
   # Replace dep1 dep2 ... with your dependencies
-  - conda create -q -n myenv python=python3.6 networkx peewee obonet
+  - conda create -q -n myenv 
   - source activate myenv
+  - conda install --yes networkx peewee
+  - pip install obonet
 
 script:
   - wget http://purl.obolibrary.org/obo/hp.obo
