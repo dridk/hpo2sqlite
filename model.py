@@ -19,7 +19,7 @@ class Nodes(Model):
     left      = IntegerField()
     right     = IntegerField()
     depth     = IntegerField()
-    parent_id = IntegerField()
+    parent    = ForeignKeyField('self', null=True)
     term      = ForeignKeyField(Terms)
 
     class Meta:
