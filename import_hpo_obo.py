@@ -48,11 +48,11 @@ def visit_tree(tree):
         if sens == "forward":
             depth+=1
             parent = node_name_1
-            tree.node[node_name_2].update({"left": index, "depth":depth, "parent": parent})
+            tree.nodes[node_name_2].update({"left": index, "depth":depth, "parent": parent})
 
         if sens == "reverse":
             depth-=1
-            tree.node[node_name_2].update({"right": index, "depth":depth})
+            tree.nodes[node_name_2].update({"right": index, "depth":depth})
 
         index+=1
 
