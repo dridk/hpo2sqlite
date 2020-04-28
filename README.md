@@ -20,7 +20,16 @@ Download hpo obo file from http://purl.obolibrary.org/obo/hp.obo and run the scr
 python import_hpo_obo.py hp.obo
 ```
 
-
+ ## Import gene and disease 
+ ```
+ wget http://compbio.charite.de/jenkins/job/hpo.annotations/lastStableBuild/artifact/misc/phenotype_annotation.tab
+ python import_disease.py phenotype_annotation.tab   
+ ```
+ 
+ ```
+ wget http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/lastSuccessfulBuild/artifact/annotation/ALL_SOURCES_ALL_FREQUENCIES_genes_to_pheno
+ python import_gene.py ALL_SOURCES_ALL_FREQUENCIES_genes_to_phenotype.txt
+```
 
 ### Table Terms 
 Terms contains each unique HPO term with name and definition. 
