@@ -27,7 +27,7 @@ python import_hpo_obo.py hp.obo
  ```
  
  ```
- wget http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/lastSuccessfulBuild/artifact/annotation/ALL_SOURCES_ALL_FREQUENCIES_genes_to_pheno
+ wget http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/lastSuccessfulBuild/artifact/annotation/ALL_SOURCES_ALL_FREQUENCIES_genes_to_phenotype.txt
  python import_gene.py ALL_SOURCES_ALL_FREQUENCIES_genes_to_phenotype.txt
 ```
 
