@@ -15,7 +15,6 @@ pip install peewee
 
 ## Run 
 Download hpo obo file from http://purl.obolibrary.org/obo/hp.obo and run the script as follow
-
 ```
 python import_hpo_obo.py hp.obo
 ```
@@ -27,8 +26,8 @@ python import_hpo_obo.py hp.obo
  ```
  
  ```
- wget http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/lastSuccessfulBuild/artifact/annotation/ALL_SOURCES_ALL_FREQUENCIES_genes_to_phenotype.txt
- python import_gene.py ALL_SOURCES_ALL_FREQUENCIES_genes_to_phenotype.txt
+ wget http://compbio.charite.de/jenkins/job/hpo.annotations/lastSuccessfulBuild/artifact/util/annotation/phenotype_to_genes.txt
+ python import_gene.py phenotype_to_genes.txt
 ```
 
 ### Table Terms 

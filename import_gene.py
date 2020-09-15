@@ -5,18 +5,26 @@ import os
 from model import *
 import sys
 from peewee import *
+from tqdm import tqdm
 
 #  Gene to phenotypes
 #  http://compbio.charite.de/jenkins/job/hpo.annotations.monthly/lastSuccessfulBuild/artifact/annotation/ALL_SOURCES_ALL_FREQUENCIES_genes_to_phenotype.txt
 gene_file = str(sys.argv[1])
 
 
+def chunks(l, n):
+    # For item i in a range that is a length of l,
+    for i in range(0, len(l), n):
+        # Create an index range for l of n items:
+        yield l[i : i + n]
+
+
 db = SqliteDatabase("hpo.db")
 
 try:
-    db.create_tables([Genes, Term_has_Genes])
+    db.create_tables([Genes, Genes_has_Terms])
 except:
-    pass
+    print("cannot create tables")
 
 
 # save all hpo in memory map
@@ -38,8 +46,9 @@ with open(gene_file, "r") as file:
 
 data_source = [{"entrez_id": i[0], "name": i[1]} for i in genes]
 
+
 with db.atomic():
-    Genes.insert_many(data_source)
+    Genes.insert_many(data_source).execute()
 
     # for data_dict in data_source:
     #    Genes.create(**data_dict)
@@ -66,4 +75,5 @@ with open(gene_file, "r") as file:
 
 
 with db.atomic():
-    Genes_has_Terms.insert_many(hpo_genes)
+    for items in tqdm(list(chunks(hpo_genes, 100))):
+        Genes_has_Terms.insert_many(items).execute()
