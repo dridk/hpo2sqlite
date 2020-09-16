@@ -55,7 +55,6 @@ class Genes_has_Terms(Model):
 
 
 class Diseases(Model):
-    name = CharField()
     database_id = CharField()
     name = CharField()
 
@@ -68,8 +67,10 @@ class Disease_has_Terms(Model):
     disease = ForeignKeyField(Diseases)
     qualifier = BooleanField()
     evidence = CharField()
-    frequency = CharField()
     aspect = CharField(max_length=1)
+
+    class Meta:
+        database = db
 
 
 def create_database_shema():
