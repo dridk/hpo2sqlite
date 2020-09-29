@@ -11,6 +11,7 @@ class Terms(Model):
     name = CharField()
     definition = CharField(default=None)
     comment = CharField(default=None)
+    disease_count = IntegerField()
 
     class Meta:
         database = db

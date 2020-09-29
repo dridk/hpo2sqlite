@@ -22,7 +22,7 @@ def chunks(l, n):
 db = SqliteDatabase("hpo.db")
 
 try:
-    db.create_tables([Genes, Genes_has_Terms])
+    db.create_tables([Genes, Genes_has_Terms],safe=False)
 except:
     print("cannot create tables")
 
