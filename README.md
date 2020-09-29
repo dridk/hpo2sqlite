@@ -11,6 +11,7 @@ You need python3 with the following modules
 pip install networkx
 pip install obonet 
 pip install peewee 
+pip install tqdm
 ```
 
 ## Run 
@@ -21,8 +22,8 @@ python import_hpo_obo.py hp.obo
 
  ## Import gene and disease 
  ```
- wget http://compbio.charite.de/jenkins/job/hpo.annotations/lastStableBuild/artifact/misc/phenotype_annotation.tab
- python import_disease.py phenotype_annotation.tab   
+ wget http://compbio.charite.de/jenkins/job/hpo.annotations.current/lastSuccessfulBuild/artifact/current/phenotype.hpoa
+ python import_disease.py phenotype.hpoa
  ```
  
  ```
